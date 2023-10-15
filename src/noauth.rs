@@ -15,7 +15,7 @@ fn main() -> Result<(), Box<dyn Error>> {
             let domain: Root = serde_json::from_str(&json)?;
             for feed in domain.feeds.unwrap() {
                 if feed.spec == "gtfs-rt" {
-                    if feed.authorization.is_some() {
+                    if feed.authorization.is_none() {
                         println!("{}", feed.id);
                     }
                     
