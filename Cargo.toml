@@ -1,0 +1,25 @@
+[package]
+name = "catenary-backend"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+regress = "0.7.1"
+serde = "1.0.188"
+serde_json = "1.0.107"
+schemafy = "0.6.0"
+schemafy_core = "0.6.0"
+typify = "0.0.14"
+schema = "0.1.0"
+serde_derive = "*"
+serde_repr = "*"
+
+[[bin]]
+name = "gtfs"
+path = "src/gtfs.rs"
+
+[[bin]]
+name = "test"
+path = "src/test.rs"
