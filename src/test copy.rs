@@ -16,10 +16,8 @@ fn main() -> Result<(), Box<dyn Error>> {
             for feed in domain.feeds {
                 match feed.spec {
                     FeedSpec::GtfsRt => {
-                        if feed.authorization.is_some() {
-                            println!("{},TRUE", feed.id);
-                        } else {
-                            println!("{},FALSE", feed.id);
+                        if feed.authorization.is_none() {
+                            println!("{}", feed.id);
                         }
                     }
                     _ => {}

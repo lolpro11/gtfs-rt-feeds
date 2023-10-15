@@ -1,7 +1,7 @@
 extern crate serde;
 extern crate serde_json;
 mod dmfr;
-use dmfr::Root;
+use dmfr::{DistributedMobilityFeedRegistry, FeedSpec};
 use std::error::Error;
 use std::fs;
 
@@ -12,13 +12,13 @@ fn main() -> Result<(), Box<dyn Error>> {
         let path = entry.path();
         if path.is_file() && path.extension().unwrap_or_default() == "json" {
             let json = fs::read_to_string(&path)?;
-            let domain: Root = serde_json::from_str(&json)?;
-            for feed in domain.feeds.unwrap() {
-                if feed.spec == "gtfs-rt" {
-                    if feed.authorization.is_none() {
+            let domain: DistributedMobilityFeedRegistry = serde_json::from_str(&json)?;
+            for feed in domain.feeds {
+                match feed.spec {
+                    FeedSpec::GtfsRt => {
                         println!("{}", feed.id);
                     }
-                    
+                    _ => {}
                 }
             }
         }
