@@ -28,6 +28,9 @@ path = "src/auth.rs"
 name = "noauth"
 path = "src/noauth.rs"
 
+[[bin]]
+name = "noauthlinks"
+path = "src/noauthlinks.rs"
 
 [[bin]]
 name = "feeds"
