@@ -25,5 +25,18 @@ name = "auth"
 path = "src/auth.rs"
 
 [[bin]]
+name = "noauth"
+path = "src/noauth.rs"
+
+
+[[bin]]
+name = "feeds"
+path = "src/feeds.rs"
+
+[[bin]]
+name = "swiftly"
+path = "src/swiftly.rs"
+
+[[bin]]
 name = "test"
 path = "src/test.rs"

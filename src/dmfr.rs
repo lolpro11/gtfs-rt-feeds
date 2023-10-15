@@ -59,7 +59,8 @@ pub struct LicenseDescription {
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Authorization {
-    pub r#type: String,
+    #[serde(rename = "type")]
+    pub type_auth: String,
     pub param_name: Option<String>,
     pub info_url: Option<String>,
 }
