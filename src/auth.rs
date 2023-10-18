@@ -6,7 +6,7 @@ use std::error::Error;
 use std::fs;
 
 fn main() -> Result<(), Box<dyn Error>> {
-    let dir = "/home/lolpro11/Documents/catenary-backend/transitland-atlas/feeds/";
+    let dir = "/home/lolpro11/Documents/transitland-atlas/feeds/";
     for entry in fs::read_dir(dir)? {
         let entry = entry?;
         let path = entry.path();
@@ -17,7 +17,7 @@ fn main() -> Result<(), Box<dyn Error>> {
                 match feed.spec {
                     FeedSpec::GtfsRt => {
                         if feed.authorization.is_some() {
-                            println!("{}", feed.id);
+                            println!("{},{}", feed.id, feed.authorization.unwrap().info_url.unwrap_or(entry.file_name().to_string_lossy().into_owned()));
                         }
                     }
                     _ => {}

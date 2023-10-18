@@ -6,7 +6,7 @@ use std::error::Error;
 use std::fs;
 
 fn main() -> Result<(), Box<dyn Error>> {
-    let dir = "/home/lolpro11/Documents/catenary-backend/transitland-atlas/feeds/";
+    let dir = "/home/lolpro11/Documents/transitland-atlas/feeds/";
     for entry in fs::read_dir(dir)? {
         let entry = entry?;
         let path = entry.path();

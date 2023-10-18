@@ -7,7 +7,7 @@ use std::fs;
 use dmfr::FeedSpec;
 
 fn main() -> Result<(), Box<dyn Error>> {
-    let dir = "/home/lolpro11/Documents/catenary-backend/transitland-atlas/feeds/";
+    let dir = "/home/lolpro11/Documents/transitland-atlas/feeds/";
     println!("onestop,realtime_vehicle_positions,realtime_trip_updates,realtime_alerts,has_auth,auth_type,auth_header,auth_password,fetch_interval,multiauth");
     for entry in fs::read_dir(dir)? {
         let entry = entry?;
