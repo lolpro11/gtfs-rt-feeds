@@ -32,7 +32,7 @@ fn main() -> Result<(), Box<dyn Error>> {
                                 Some(realtime_alerts) => csv_str.push_str(format!(",{}", realtime_alerts.to_string()).as_str()),
                                 None => csv_str.push_str(","),
                             }
-                            csv_str.push_str(",false,,,,0.1,");
+                            csv_str.push_str(",false,,,,1,");
                             println!("{}", csv_str);
                         }
                     }
