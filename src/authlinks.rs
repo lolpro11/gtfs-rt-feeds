@@ -18,7 +18,7 @@ fn main() -> Result<(), Box<dyn Error>> {
             for feed in domain.feeds {
                 match feed.spec {
                     FeedSpec::GtfsRt => {//println!("{:?}", feed.clone());
-                        if feed.authorization.is_none() {
+                        if feed.authorization.is_some() {
                             let mut csv_str  = feed.id;
                             match feed.urls.realtime_vehicle_positions {
                                 Some(realtime_vehicle_positions) => csv_str.push_str(format!(",{}", realtime_vehicle_positions.to_string()).as_str()),
@@ -32,7 +32,10 @@ fn main() -> Result<(), Box<dyn Error>> {
                                 Some(realtime_alerts) => csv_str.push_str(format!(",{}", realtime_alerts.to_string()).as_str()),
                                 None => csv_str.push_str(","),
                             }
-                            csv_str.push_str(",false,,,,0.1,");
+                            csv_str.push_str(",true");
+                            csv_str.push_str(format!(",{}", feed.authorization.clone().unwrap().type_.to_string()).as_str());
+                            csv_str.push_str(format!(",{}", feed.authorization.unwrap().param_name.unwrap()).as_str());
+                            csv_str.push_str("EXAMPLEKEY,3,");
                             println!("{}", csv_str);
                         }
                     }

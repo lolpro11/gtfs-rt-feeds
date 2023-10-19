@@ -18,6 +18,10 @@ name = "auth"
 path = "src/auth.rs"
 
 [[bin]]
+name = "authlinks"
+path = "src/authlinks.rs"
+
+[[bin]]
 name = "noauth"
 path = "src/noauth.rs"
 
