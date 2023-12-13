@@ -37,6 +37,3 @@ path = "src/feeds.rs"
 name = "swiftly"
 path = "src/swiftly.rs"
 
-[[bin]]
-name = "test"
-path = "src/test.rs"
