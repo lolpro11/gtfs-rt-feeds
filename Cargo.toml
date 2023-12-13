@@ -14,26 +14,6 @@ serde_derive = "*"
 serde_repr = "*"
 
 [[bin]]
-name = "auth"
-path = "src/auth.rs"
-
-[[bin]]
-name = "authlinks"
-path = "src/authlinks.rs"
-
-[[bin]]
-name = "noauth"
-path = "src/noauth.rs"
-
-[[bin]]
-name = "noauthlinks"
-path = "src/noauthlinks.rs"
-
-[[bin]]
-name = "feeds"
-path = "src/feeds.rs"
-
-[[bin]]
-name = "swiftly"
-path = "src/swiftly.rs"
+name = "makecsv"
+path = "src/makecsv.rs"
 
