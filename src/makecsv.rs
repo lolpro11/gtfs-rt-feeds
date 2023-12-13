@@ -1,5 +1,12 @@
 use std::env;
-
+use arguments;
+extern crate serde;
+extern crate serde_json;
+mod dmfr;
+use dmfr::DistributedMobilityFeedRegistry;
+use std::error::Error;
+use std::fs;
+use dmfr::FeedSpec;
 
 fn all() -> Result<(), Box<dyn Error>> {
     let dir = "/home/lolpro11/Documents/transitland-atlas/feeds/";
@@ -115,8 +122,12 @@ fn auth() -> Result<(), Box<dyn Error>> {
                             }
                             csv_str.push_str(",true");
                             csv_str.push_str(format!(",{}", feed.authorization.clone().unwrap().type_.to_string()).as_str());
-                            csv_str.push_str(format!(",{}", feed.authorization.unwrap().param_name.unwrap()).as_str());
-                            csv_str.push_str("EXAMPLEKEY,3,");
+                            csv_str.push_str(format!(",{}", feed.authorization.unwrap().param_name.unwrap_or_else(|| "".to_string())).as_str());
+                            if csv_str.chars().last().unwrap() == ',' {
+                                csv_str.push_str("EXAMPLEKEY,3,");
+                            } else {
+                                csv_str.push_str(",EXAMPLEKEY,3,");
+                            }
                             println!("{}", csv_str);
                         }
                     }
@@ -131,12 +142,14 @@ fn auth() -> Result<(), Box<dyn Error>> {
 fn main() -> Result<(), Box<dyn Error>> {
     let feed_type = arguments::parse(std::env::args())
         .expect("Add --feeds <string>")
-        .get::<String>("feeds");
+        .get::<String>("feeds").unwrap_or_else(|| "all".to_owned());
     if feed_type == "all" {
-        all();
-    } else if feed == "noauth" {
-        noauth();
-    } else if feed == "auth" {
-        auth();
+        all()
+    } else if feed_type == "noauth" {
+        noauth()
+    } else if feed_type == "auth" {
+        auth()
+    } else {
+        Err(("Must specify feed type: all, noauth, or auth").into())
     }
 }
