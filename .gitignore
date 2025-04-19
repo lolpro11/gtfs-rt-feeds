@@ -10,10 +10,3 @@ Cargo.lock
 
 # MSVC Windows builds of rustc generate these, which store debugging information
 *.pdb
-
-gtfs_schedules/
-transitland-atlas/
-transitland-atlas
-gtfs_static_zips/
-gtfs_static_zips
-gtfs_uncompressed/

@@ -6,11 +6,11 @@ use dmfr::DistributedMobilityFeedRegistry;
 use std::error::Error;
 use std::fs;
 use dmfr::FeedSpec;
+static DIR: &str = "./transitland-atlas/feeds/";
 
 fn all() -> Result<(), Box<dyn Error>> {
-    let dir = "/home/lolpro11/Documents/transitland-atlas/feeds/";
     println!("onestop,realtime_vehicle_positions,realtime_trip_updates,realtime_alerts,has_auth,auth_type,auth_header,auth_password,fetch_interval,multiauth");
-    for entry in fs::read_dir(dir)? {
+    for entry in fs::read_dir(DIR)? {
         let entry = entry?;
         let path = entry.path();
         if path.is_file() && path.extension().unwrap_or_default() == "json" {
@@ -53,9 +53,8 @@ fn all() -> Result<(), Box<dyn Error>> {
 }
 
 fn noauth() -> Result<(), Box<dyn Error>> {
-    let dir = "/home/lolpro11/Documents/transitland-atlas/feeds/";
     println!("onestop,realtime_vehicle_positions,realtime_trip_updates,realtime_alerts,has_auth,auth_type,auth_header,auth_password,fetch_interval,multiauth");
-    for entry in fs::read_dir(dir)? {
+    for entry in fs::read_dir(DIR)? {
         let entry = entry?;
         let path = entry.path();
         if path.is_file() && path.extension().unwrap_or_default() == "json" {
@@ -86,9 +85,8 @@ fn noauth() -> Result<(), Box<dyn Error>> {
 }
 
 fn auth() -> Result<(), Box<dyn Error>> {
-    let dir = "/home/lolpro11/Documents/transitland-atlas/feeds/";
     println!("onestop,realtime_vehicle_positions,realtime_trip_updates,realtime_alerts,has_auth,auth_type,auth_header,auth_password,fetch_interval,multiauth");
-    for entry in fs::read_dir(dir)? {
+    for entry in fs::read_dir(DIR)? {
         let entry = entry?;
         let path = entry.path();
         if path.is_file() && path.extension().unwrap_or_default() == "json" {
